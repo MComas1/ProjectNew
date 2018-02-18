@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html>
+<meta charset="UTF-8">
+<head>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style type="text/css">
+		body{
+			margin: 50px;
+			margin-top: 10px;
+			/*background: linear-gradient(to top, #ffcc99 0%, #99ccff 100%);*/
+		}
+		#addChist{
+			width: 60%;
+		}
+		.bkw{
+			background: white;
+		}
+    #jotd{
+      padding-left: 5px;
+      width: 50%;
+    }
+	</style>
+	<title>Chistes 24h</title>
+	<script type="text/javascript">
+		var chist = ['Van dos i cau el del mig.', '-¿Qué le dice un pez a otro?<br>-Nada.', 'Va un pez y se ahoga.', "- Mamá, mamá, en el cole me tiran migas de pan.<br>- No les hagas caso, Paloma.","¿Sabes qué pasa con el facebook? Me dice 'su clave es incorrecta', entonces pongo 'incorrecta' pero ¡no abre!...", "- ¿Qué coche usa Papá Noel?<br>- Un renol.", "Va un cargol i derrapa, amb el frè de ma posat!", "Van dos grans de sorra pel desert i un li diu a l'altre -em sembla que ens segueixen!", "Va un barrufet, cau i es fa un blau.", "Entra un calb a una perruqueria: 'Ai, perdo'!", "-Quin va ser l'últim viatge de Pinotxo?<br>-Va anar a les Falles de València.", "-Què dice un perro argentino?<br>-Esteeeee... guau.", "-Què és una cosa groga que de sobte es torna vermella?<br>-Un canari en una liquadora.", "- ¡Papá, mira el cielo! ¡Está lleno de botoncitos de \"Favorito\"!<br>- Estrellas, hijo. Se llaman estrellas.", "-Prométeme que cuidarás a los niños y que les hablarás de mí.<br>-¿Ya has vuelto a poner tus síntomas en Google?<br>-Te quiero mucho..."];
+		function chiste() {
+			var idx = Math.floor(Math.random() * chist.length);
+			document.getElementById("randChist").innerHTML = chist[idx];
+		}
+		function addCh() {
+      var xst = document.getElementById("exampleFormControlTextarea1").value;
+      xst = xst + "<i><b><small><br>--sent by: ";
+      if (document.getElementById("autoSizingCheck2").checked) {
+        xst = xst + "anonymous";
+      }
+      else {
+        xst = xst + document.getElementById("inlineFormInputName").value;
+      }
+      xst = xst + "</small></b></i>";
+			chist.push(xst);
+      document.getElementById("inlineFormInputName").value = "";
+			document.getElementById("exampleFormControlTextarea1").value = "";
+      document.getElementById("inputEmail3").value = "";
+      document.getElementById("autoSizingCheck2").checked = false;
+			document.getElementById("inlineFormInputName").disabled = false;
+			document.getElementById("inputEmail3").disabled = false;
+		}
+		function check(ch) {
+			document.getElementById("inlineFormInputName").disabled = ch;
+			document.getElementById("inputEmail3").disabled = ch;
+		}
+	</script>
+</head>
+<body>
+	<h2>Chistes!</h2>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    	<ul class="navbar-nav mr-auto">
+      		<li class="nav-item active">
+        		<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      		</li>
+      		<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Animals</a>
+          <a class="dropdown-item" href="#">Jaimito</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Etc.</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="html/best.html">Els Millors</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="html/worst.html">Els Pitjors</a>
+      </li>
+    	</ul>
+    	<form class="form-inline my-2 my-lg-0">
+      		<input class="form-control mr-sm-2" type="search" placeholder="Cerca" aria-label="Search">
+      		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Busca</button>
+    	</form>
+  		</div>
+	</nav>
+	<hr>
+	<br>
+	<center><h3>Chiste 'Random'!</h3>
+	<br>
+	<button type="button" class="btn btn-outline-secondary bkw" onclick="chiste()">Random!</button>
+	<br><br>
+	<div class="d-inline-flex p-2 border border-success bkw" id="randChist">Espai pel chiste random!</div></center>
+	<br>
+	<hr>
+	<br>
+	<div class="media">
+  		<img class="align-self-center mr-3 border border-warning" src="img/css-joke.png" alt="Generic placeholder image" width="75px">
+  		<div class="media-body">
+    		<h5 class="mt-0">Chiste del Dia!</h5>
+    		<p class="border border-info bkw" id="jotd">99 bugs in the code, 1 bug fixed, compile again, 100 bugs in the code...</p>
+  		</div>
+	</div>
+	<br>
+	<hr>
+	<br>
+	<h5>Envia Chiste!</h5>
+<!--<form id="addChist"> -->
+  <div class="form-group" id="addChist">
+    <label for="exampleFormControlSelect1">Categoria</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>Animals</option>
+      <option>Jaimito</option>
+      <option>etc.</option>
+    </select>
+  <!--</div> -->
+
+  <!--<div class="form-group"> -->
+    <label for="exampleFormControlTextarea1">Text...</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <!--</div>-->
+  <div class="form-row align-items-center">
+    <div class="col-sm-3 my-1">
+      <label class="col-sm-1 col-form-label" for="inlineFormInputName">Firma:</label>
+      <input type="text" class="form-control" id="inlineFormInputName" placeholder="Firma">
+  </div>
+  <div class="col-sm-3 my-1">
+      <label for="inputEmail3" class="col-sm-1 col-form-label">Email:</label>
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="col-auto my-1">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="autoSizingCheck2" onclick="check(this.checked)">
+        <label class="form-check-label" for="autoSizingCheck2">
+          Anònim
+        </label>
+      </div>
+    </div>
+  <div class="form-group row">
+    
+  </div>
+  <div class="col-auto my-1">
+      <button type="button" class="btn btn-primary" onclick="addCh()">Submit</button>
+    </div>
+    </div>
+  
+<!--</form>-->
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
